@@ -30,3 +30,8 @@
     * [Fiona简介及Shapefile数据读取](GDAL空间数据处理/Fiona矢量数据处理/Fiona简介及Shapefile数据读取.md)
     * [使用Fiona创建Shapefile矢量数据](GDAL空间数据处理/Fiona矢量数据处理/使用Fiona创建Shapefile矢量数据.md)
 
+  * [Rasterio栅格数据处理](GDAL空间数据处理/Rasterio栅格数据处理/README.md)
+    * [使用Rasterio读取栅格数据](GDAL空间数据处理/Rasterio栅格数据处理/使用Rasterio读取栅格数据.md)
+
+  
+
