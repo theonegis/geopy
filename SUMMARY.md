@@ -32,6 +32,7 @@
 
   * [Rasterio栅格数据处理](GDAL空间数据处理/Rasterio栅格数据处理/README.md)
     * [使用Rasterio读取栅格数据](GDAL空间数据处理/Rasterio栅格数据处理/使用Rasterio读取栅格数据.md)
+    * [使用Rasterio创建栅格数据](GDAL空间数据处理/Rasterio栅格数据处理/使用Rasterio创建栅格数据.md)
 
   
 
