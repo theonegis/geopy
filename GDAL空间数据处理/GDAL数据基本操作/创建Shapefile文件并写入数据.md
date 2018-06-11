@@ -1,4 +1,4 @@
-# 打开Shapefile文件的正确方式
+# 创建Shapefile文件并写入数据
 
 作者：阿振
 
