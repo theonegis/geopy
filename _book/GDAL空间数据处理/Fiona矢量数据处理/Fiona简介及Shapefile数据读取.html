@@ -1,0 +1,775 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>Fiona简介及Shapefile数据读取 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="使用Fiona创建Shapefile矢量数据.html" />
+    
+    
+    <link rel="prev" href="REDAME.md" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../Python基础/">
+            
+                <a href="../../Python基础/">
+            
+                    
+                    Python基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../Python基础/Python环境搭建及基本数据类型.html">
+            
+                <a href="../../Python基础/Python环境搭建及基本数据类型.html">
+            
+                    
+                    Python环境搭建及基本数据类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../Python基础/运算符及字符串.html">
+            
+                <a href="../../Python基础/运算符及字符串.html">
+            
+                    
+                    运算符及字符串
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../Python基础/序列与字典.html">
+            
+                <a href="../../Python基础/序列与字典.html">
+            
+                    
+                    序列与字典
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../../Python基础/流程控制语句.html">
+            
+                <a href="../../Python基础/流程控制语句.html">
+            
+                    
+                    流程控制语句
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../../Python基础/函数.html">
+            
+                <a href="../../Python基础/函数.html">
+            
+                    
+                    函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../../Python基础/面向对象编程初识.html">
+            
+                <a href="../../Python基础/面向对象编程初识.html">
+            
+                    
+                    面向对象编程初识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../../Python基础/面向对象编程高级.html">
+            
+                <a href="../../Python基础/面向对象编程高级.html">
+            
+                    
+                    面向对象编程高级
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../../Python基础/Python科学计算.html">
+            
+                <a href="../../Python基础/Python科学计算.html">
+            
+                    
+                    Python科学计算
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../../Python基础/空间数据处理环境搭建.html">
+            
+                <a href="../../Python基础/空间数据处理环境搭建.html">
+            
+                    
+                    空间数据处理环境搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../空间数据基础/">
+            
+                <a href="../../空间数据基础/">
+            
+                    
+                    空间数据基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../空间数据基础/空间参考系统.html">
+            
+                <a href="../../空间数据基础/空间参考系统.html">
+            
+                    
+                    空间参考系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../空间数据基础/地图投影.html">
+            
+                <a href="../../空间数据基础/地图投影.html">
+            
+                    
+                    地图投影
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../../空间数据基础/空间数据.html">
+            
+                <a href="../../空间数据基础/空间数据.html">
+            
+                    
+                    空间数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    GDAL空间数据处理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../GDAL简介.html">
+            
+                <a href="../GDAL简介.html">
+            
+                    
+                    GDAL简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../GDAL数据基本操作.html">
+            
+                <a href="../GDAL数据基本操作.html">
+            
+                    
+                    GDAL数据基本操作
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="../GDAL数据基本操作/打开栅格数据的正确方式.html">
+            
+                <a href="../GDAL数据基本操作/打开栅格数据的正确方式.html">
+            
+                    
+                    打开栅格数据的正确方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="../GDAL数据基本操作/栅格数据格式转换.html">
+            
+                <a href="../GDAL数据基本操作/栅格数据格式转换.html">
+            
+                    
+                    栅格数据格式转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.3" data-path="../GDAL数据基本操作/栅格数据创建与保存.html">
+            
+                <a href="../GDAL数据基本操作/栅格数据创建与保存.html">
+            
+                    
+                    栅格数据创建与保存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.4" data-path="../GDAL数据基本操作/读取HDF或者NetCDF格式的栅格数据.html">
+            
+                <a href="../GDAL数据基本操作/读取HDF或者NetCDF格式的栅格数据.html">
+            
+                    
+                    读取HDF或者NetCDF格式的栅格数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.5" data-path="../GDAL数据基本操作/栅格数据投影转换.html">
+            
+                <a href="../GDAL数据基本操作/栅格数据投影转换.html">
+            
+                    
+                    栅格数据投影转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.6" data-path="../GDAL数据基本操作/栅格数据裁剪.html">
+            
+                <a href="../GDAL数据基本操作/栅格数据裁剪.html">
+            
+                    
+                    栅格数据裁剪
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.7" data-path="../GDAL数据基本操作/打开Shapefile文件的正确方式.html">
+            
+                <a href="../GDAL数据基本操作/打开Shapefile文件的正确方式.html">
+            
+                    
+                    打开Shapefile文件的正确方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.8" data-path="../GDAL数据基本操作/创建Shapefile文件并写入数据.html">
+            
+                <a href="../GDAL数据基本操作/创建Shapefile文件并写入数据.html">
+            
+                    
+                    创建Shapefile文件并写入数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.9" data-path="../GDAL数据基本操作/矢量数据投影转换.html">
+            
+                <a href="../GDAL数据基本操作/矢量数据投影转换.html">
+            
+                    
+                    矢量数据投影转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="REDAME.md">
+            
+                <span>
+            
+                    
+                    Fiona矢量数据处理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.4.3.1" data-path="Fiona简介及Shapefile数据读取.html">
+            
+                <a href="Fiona简介及Shapefile数据读取.html">
+            
+                    
+                    Fiona简介及Shapefile数据读取
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.2" data-path="使用Fiona创建Shapefile矢量数据.html">
+            
+                <a href="使用Fiona创建Shapefile矢量数据.html">
+            
+                    
+                    使用Fiona创建Shapefile矢量数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../Rasterio栅格数据处理/README.md">
+            
+                <span>
+            
+                    
+                    Rasterio栅格数据处理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.4.1" data-path="../Rasterio栅格数据处理/使用Rasterio读取栅格数据.html">
+            
+                <a href="../Rasterio栅格数据处理/使用Rasterio读取栅格数据.html">
+            
+                    
+                    使用Rasterio读取栅格数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.2" data-path="../Rasterio栅格数据处理/使用Rasterio创建栅格数据.html">
+            
+                <a href="../Rasterio栅格数据处理/使用Rasterio创建栅格数据.html">
+            
+                    
+                    使用Rasterio创建栅格数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.3" data-path="../Rasterio栅格数据处理/使用Rasterio做投影变换.html">
+            
+                <a href="../Rasterio栅格数据处理/使用Rasterio做投影变换.html">
+            
+                    
+                    使用Rasterio做投影变换
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >Fiona简介及Shapefile数据读取</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="fiona&#x7B80;&#x4ECB;&#x53CA;shapefile&#x6570;&#x636E;&#x8BFB;&#x53D6;">Fiona&#x7B80;&#x4ECB;&#x53CA;Shapefile&#x6570;&#x636E;&#x8BFB;&#x53D6;</h1>
+<p>&#x4F5C;&#x8005;&#xFF1A;&#x963F;&#x632F;</p>
+<p>&#x90AE;&#x7BB1;&#xFF1A;tanzhenyugis@163.com</p>
+<p>&#x535A;&#x5BA2;&#xFF1A;<a href="https://blog.csdn.net/theonegis/article/details/80089375" target="_blank">https://blog.csdn.net/theonegis/article/details/80089375</a></p>
+<p>&#x4FEE;&#x6539;&#x65F6;&#x95F4;&#xFF1A;2018-06-06</p>
+<p>&#x58F0;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x535A;&#x4E3B;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x8F6C;&#x8F7D;&#x8BF7;&#x6CE8;&#x660E;&#x539F;&#x6587;&#x51FA;&#x5904;</p>
+<hr>
+<h2 id="fiona&#x7B80;&#x4ECB;">Fiona&#x7B80;&#x4ECB;</h2>
+<p>&#x7528;GDAL&#x7684;Python&#x7ED1;&#x5B9A;API&#x4E66;&#x5199;&#x7A0B;&#x5E8F;&#x6709;&#x6CA1;&#x6709;&#x4E00;&#x79CD;&#x4ECD;&#x7136;&#x5728;&#x5199;C/C++&#x7684;&#x611F;&#x89C9;&#xFF0C;Fiona&#x57FA;&#x4E8E;GDAL&#x63D0;&#x4F9B;&#x4E86;&#x66F4;&#x52A0;Pythonic&#x7684;&#x8BFB;&#x53D6;&#x7A7A;&#x95F4;&#x77E2;&#x91CF;&#x6570;&#x636E;&#x7684;API&#xFF0C;&#x53C2;&#x89C1;&#xFF1A;<a href="http://toblerity.org/fiona/index.html" target="_blank">http://toblerity.org/fiona/index.html</a></p>
+<p>&#x8FD9;&#x91CC;&#x4E3B;&#x8981;&#x8BF4;&#x4E00;&#x4E0B;Fiona&#x4E2D;&#x5BF9;&#x6570;&#x636E;&#x7684;&#x63CF;&#x8FF0;&#x6A21;&#x578B;&#x548C;GDAL&#x4E2D;&#x7684;&#x4E0D;&#x540C;&#xFF1A;</p>
+<p>GDAL&#x4E2D;&#x5BF9;&#x4E8E;&#x77E2;&#x91CF;&#x6570;&#x636E;&#x91C7;&#x7528;&#x6570;&#x636E;&#x6E90;&#xFF08;DataSource&#xFF09;- &#x56FE;&#x5C42;&#xFF08;Layer&#xFF09;- &#x8981;&#x7D20;&#xFF08;Feature&#xFF09;- &#x5C5E;&#x6027;&#x548C;&#x51E0;&#x4F55;&#x4F53;&#xFF08;Attributes and Geometry&#xFF09;</p>
+<p>Fiona&#x91C7;&#x7528;Python&#x4E2D;&#x5185;&#x7F6E;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x8868;&#x793A;&#x77E2;&#x91CF;&#x6570;&#x636E;&#xFF0C;&#x4E00;&#x4E2A;&#x8981;&#x7D20;&#x4EE5;GeoJSON&#x8868;&#x793A;&#xFF0C;&#x4F7F;&#x7528;Python&#x5185;&#x7F6E;&#x7684;&#x5B57;&#x5178;&#xFF08;<code>dict</code>&#xFF09;&#x7ED3;&#x6784;&#x7EC4;&#x7EC7;&#xFF1B;&#x4E00;&#x4E2A;&#x56FE;&#x5C42;&#x5305;&#x542B;&#x5728;&#x4E00;&#x4E2A;&#x96C6;&#x5408;&#x4E2D;&#xFF08;<code>Collection</code>&#xFF09;&#x3002;&#x53EF;&#x4EE5;&#x5BF9;&#x8BE5;&#x96C6;&#x5408;&#x8FDB;&#x884C;&#x8FED;&#x4EE3;&#x904D;&#x5386;&#xFF0C;&#x5F97;&#x5230;&#x5176;&#x4E2D;&#x7684;&#x8981;&#x7D20;&#x3002;</p>
+<p>&#x8981;&#x7D20;&#x662F;&#x4EE5;GeoJSON&#x8868;&#x793A;&#x7684;&#xFF0C;&#x7ED3;&#x6784;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code class="lang-JSON">{<span class="hljs-string">&apos;type&apos;</span>: <span class="hljs-string">&apos;Feature&apos;</span>, <span class="hljs-string">&apos;id&apos;</span>: <span class="hljs-string">&apos;0&apos;</span>, <span class="hljs-string">&apos;geometry&apos;</span>: {<span class="hljs-string">&apos;type&apos;</span>: <span class="hljs-string">&apos;Polygon&apos;</span>, <span class="hljs-string">&apos;coordinates&apos;</span>: [[(<span class="hljs-number">96.416</span>, <span class="hljs-number">42.7588</span>), (<span class="hljs-number">96.416</span>, <span class="hljs-number">42.7148</span>), (<span class="hljs-number">95.9766</span>, <span class="hljs-number">42.4951</span>), (<span class="hljs-number">96.0645</span>, <span class="hljs-number">42.3193</span>), (<span class="hljs-number">96.2402</span>, <span class="hljs-number">42.2314</span>), (<span class="hljs-number">95.9766</span>, <span class="hljs-number">41.9238</span>), (<span class="hljs-number">95.2734</span>, <span class="hljs-number">41.6162</span>), (<span class="hljs-number">95.1855</span>, <span class="hljs-number">41.792</span>), (<span class="hljs-number">94.5703</span>, <span class="hljs-number">41.4844</span>), (<span class="hljs-number">94.043</span>, <span class="hljs-number">41.0889</span>), (<span class="hljs-number">93.8672</span>, <span class="hljs-number">40.6934</span>), (<span class="hljs-number">93.0762</span>, <span class="hljs-number">40.6494</span>), (<span class="hljs-number">92.6367</span>, <span class="hljs-number">39.6387</span>), (<span class="hljs-number">92.373</span>, <span class="hljs-number">39.3311</span>), (<span class="hljs-number">92.373</span>, <span class="hljs-number">39.1113</span>), (<span class="hljs-number">92.373</span>, <span class="hljs-number">39.0234</span>), (<span class="hljs-number">90.1758</span>, <span class="hljs-number">38.4961</span>), (<span class="hljs-number">90.3516</span>, <span class="hljs-number">38.2324</span>), (<span class="hljs-number">90.6152</span>, <span class="hljs-number">38.3203</span>), (<span class="hljs-number">90.5273</span>, <span class="hljs-number">37.8369</span>), (<span class="hljs-number">91.0547</span>, <span class="hljs-number">37.4414</span>), (<span class="hljs-number">91.3184</span>, <span class="hljs-number">37.0898</span>), (<span class="hljs-number">90.7031</span>, <span class="hljs-number">36.7822</span>), (<span class="hljs-number">90.791</span>, <span class="hljs-number">36.6064</span>), (<span class="hljs-number">91.0547</span>, <span class="hljs-number">36.5186</span>), (<span class="hljs-number">91.0547</span>, <span class="hljs-number">36.0791</span>), (<span class="hljs-number">90.8789</span>, <span class="hljs-number">36.0352</span>), (<span class="hljs-number">90.0</span>, <span class="hljs-number">36.2549</span>), (<span class="hljs-number">89.9121</span>, <span class="hljs-number">36.0791</span>), (<span class="hljs-number">89.7363</span>, <span class="hljs-number">36.0791</span>), (<span class="hljs-number">89.209</span>, <span class="hljs-number">36.2988</span>), (<span class="hljs-number">88.7695</span>, <span class="hljs-number">36.3428</span>), (<span class="hljs-number">88.5938</span>, <span class="hljs-number">36.4746</span>), (<span class="hljs-number">87.3633</span>, <span class="hljs-number">36.4307</span>), (<span class="hljs-number">86.2207</span>, <span class="hljs-number">36.167</span>), (<span class="hljs-number">86.1328</span>, <span class="hljs-number">35.8594</span>), (<span class="hljs-number">85.6055</span>, <span class="hljs-number">35.6836</span>), (<span class="hljs-number">85.0781</span>, <span class="hljs-number">35.7275</span>), (<span class="hljs-number">84.1992</span>, <span class="hljs-number">35.376</span>), (<span class="hljs-number">83.1445</span>, <span class="hljs-number">35.4199</span>), (<span class="hljs-number">82.8809</span>, <span class="hljs-number">35.6836</span>), (<span class="hljs-number">82.4414</span>, <span class="hljs-number">35.7275</span>), (<span class="hljs-number">82.002</span>, <span class="hljs-number">35.332</span>), (<span class="hljs-number">81.6504</span>, <span class="hljs-number">35.2441</span>), (<span class="hljs-number">80.4199</span>, <span class="hljs-number">35.4199</span>), (<span class="hljs-number">80.2441</span>, <span class="hljs-number">35.2881</span>), (<span class="hljs-number">80.332</span>, <span class="hljs-number">35.1563</span>), (<span class="hljs-number">80.2441</span>, <span class="hljs-number">35.2002</span>), (<span class="hljs-number">79.8926</span>, <span class="hljs-number">34.8047</span>), (<span class="hljs-number">79.8047</span>, <span class="hljs-number">34.4971</span>), (<span class="hljs-number">79.1016</span>, <span class="hljs-number">34.4531</span>), (<span class="hljs-number">79.0137</span>, <span class="hljs-number">34.3213</span>), (<span class="hljs-number">78.2227</span>, <span class="hljs-number">34.7168</span>), (<span class="hljs-number">78.0469</span>, <span class="hljs-number">35.2441</span>), (<span class="hljs-number">78.0469</span>, <span class="hljs-number">35.5078</span>), (<span class="hljs-number">77.4316</span>, <span class="hljs-number">35.4639</span>), (<span class="hljs-number">76.8164</span>, <span class="hljs-number">35.6396</span>), (<span class="hljs-number">76.5527</span>, <span class="hljs-number">35.8594</span>), (<span class="hljs-number">76.2012</span>, <span class="hljs-number">35.8154</span>), (<span class="hljs-number">75.9375</span>, <span class="hljs-number">36.0352</span>), (<span class="hljs-number">76.0254</span>, <span class="hljs-number">36.4746</span>), (<span class="hljs-number">75.8496</span>, <span class="hljs-number">36.6943</span>), (<span class="hljs-number">75.498</span>, <span class="hljs-number">36.7383</span>), (<span class="hljs-number">75.4102</span>, <span class="hljs-number">36.958</span>), (<span class="hljs-number">75.0586</span>, <span class="hljs-number">37.002</span>), (<span class="hljs-number">74.8828</span>, <span class="hljs-number">36.9141</span>), (<span class="hljs-number">74.7949</span>, <span class="hljs-number">37.0459</span>), (<span class="hljs-number">74.5313</span>, <span class="hljs-number">37.0898</span>), (<span class="hljs-number">74.5313</span>, <span class="hljs-number">37.2217</span>), (<span class="hljs-number">74.8828</span>, <span class="hljs-number">37.2217</span>), (<span class="hljs-number">75.1465</span>, <span class="hljs-number">37.4414</span>), (<span class="hljs-number">74.8828</span>, <span class="hljs-number">37.5732</span>), (<span class="hljs-number">74.9707</span>, <span class="hljs-number">37.749</span>), (<span class="hljs-number">74.8828</span>, <span class="hljs-number">38.4521</span>), (<span class="hljs-number">74.3555</span>, <span class="hljs-number">38.6719</span>), (<span class="hljs-number">74.1797</span>, <span class="hljs-number">38.6719</span>), (<span class="hljs-number">74.0918</span>, <span class="hljs-number">38.54</span>), (<span class="hljs-number">73.8281</span>, <span class="hljs-number">38.584</span>), (<span class="hljs-number">73.7402</span>, <span class="hljs-number">38.8477</span>), (<span class="hljs-number">73.8281</span>, <span class="hljs-number">38.9795</span>), (<span class="hljs-number">73.4766</span>, <span class="hljs-number">39.375</span>), (<span class="hljs-number">73.916</span>, <span class="hljs-number">39.5068</span>), (<span class="hljs-number">73.916</span>, <span class="hljs-number">39.6826</span>), (<span class="hljs-number">73.8281</span>, <span class="hljs-number">39.7705</span>), (<span class="hljs-number">74.0039</span>, <span class="hljs-number">40.0342</span>), (<span class="hljs-number">74.8828</span>, <span class="hljs-number">40.3418</span>), (<span class="hljs-number">74.7949</span>, <span class="hljs-number">40.5176</span>), (<span class="hljs-number">75.2344</span>, <span class="hljs-number">40.4297</span>), (<span class="hljs-number">75.5859</span>, <span class="hljs-number">40.6494</span>), (<span class="hljs-number">75.7617</span>, <span class="hljs-number">40.2979</span>), (<span class="hljs-number">76.377</span>, <span class="hljs-number">40.3857</span>), (<span class="hljs-number">76.9043</span>, <span class="hljs-number">41.001</span>), (<span class="hljs-number">77.6074</span>, <span class="hljs-number">41.001</span>), (<span class="hljs-number">78.1348</span>, <span class="hljs-number">41.2207</span>), (<span class="hljs-number">78.1348</span>, <span class="hljs-number">41.3965</span>), (<span class="hljs-number">80.1563</span>, <span class="hljs-number">42.0557</span>), (<span class="hljs-number">80.2441</span>, <span class="hljs-number">42.2754</span>), (<span class="hljs-number">80.1563</span>, <span class="hljs-number">42.627</span>), (<span class="hljs-number">80.2441</span>, <span class="hljs-number">42.8467</span>), (<span class="hljs-number">80.5078</span>, <span class="hljs-number">42.8906</span>), (<span class="hljs-number">80.4199</span>, <span class="hljs-number">43.0664</span>), (<span class="hljs-number">80.7715</span>, <span class="hljs-number">43.1982</span>), (<span class="hljs-number">80.4199</span>, <span class="hljs-number">44.165</span>), (<span class="hljs-number">80.4199</span>, <span class="hljs-number">44.6045</span>), (<span class="hljs-number">79.9805</span>, <span class="hljs-number">44.8242</span>), (<span class="hljs-number">79.9805</span>, <span class="hljs-number">44.9561</span>), (<span class="hljs-number">81.7383</span>, <span class="hljs-number">45.3955</span>), (<span class="hljs-number">82.0898</span>, <span class="hljs-number">45.2197</span>), (<span class="hljs-number">82.5293</span>, <span class="hljs-number">45.2197</span>), (<span class="hljs-number">82.2656</span>, <span class="hljs-number">45.6592</span>), (<span class="hljs-number">83.0566</span>, <span class="hljs-number">47.2412</span>), (<span class="hljs-number">83.6719</span>, <span class="hljs-number">47.0215</span>), (<span class="hljs-number">84.7266</span>, <span class="hljs-number">47.0215</span>), (<span class="hljs-number">84.9023</span>, <span class="hljs-number">46.8896</span>), (<span class="hljs-number">85.5176</span>, <span class="hljs-number">47.0654</span>), (<span class="hljs-number">85.6934</span>, <span class="hljs-number">47.2852</span>), (<span class="hljs-number">85.5176</span>, <span class="hljs-number">48.1201</span>), (<span class="hljs-number">85.7813</span>, <span class="hljs-number">48.4277</span>), (<span class="hljs-number">86.5723</span>, <span class="hljs-number">48.5596</span>), (<span class="hljs-number">86.8359</span>, <span class="hljs-number">48.8232</span>), (<span class="hljs-number">86.748</span>, <span class="hljs-number">48.9551</span>), (<span class="hljs-number">86.8359</span>, <span class="hljs-number">49.1309</span>), (<span class="hljs-number">87.8027</span>, <span class="hljs-number">49.1748</span>), (<span class="hljs-number">87.8906</span>, <span class="hljs-number">48.999</span>), (<span class="hljs-number">87.7148</span>, <span class="hljs-number">48.9111</span>), (<span class="hljs-number">88.0664</span>, <span class="hljs-number">48.7354</span>), (<span class="hljs-number">87.9785</span>, <span class="hljs-number">48.6035</span>), (<span class="hljs-number">88.5059</span>, <span class="hljs-number">48.3838</span>), (<span class="hljs-number">88.6816</span>, <span class="hljs-number">48.1641</span>), (<span class="hljs-number">89.1211</span>, <span class="hljs-number">47.9883</span>), (<span class="hljs-number">89.5605</span>, <span class="hljs-number">48.0322</span>), (<span class="hljs-number">89.7363</span>, <span class="hljs-number">47.8564</span>), (<span class="hljs-number">90.0879</span>, <span class="hljs-number">47.8564</span>), (<span class="hljs-number">90.3516</span>, <span class="hljs-number">47.6807</span>), (<span class="hljs-number">90.5273</span>, <span class="hljs-number">47.2412</span>), (<span class="hljs-number">90.8789</span>, <span class="hljs-number">46.9775</span>), (<span class="hljs-number">91.0547</span>, <span class="hljs-number">46.582</span>), (<span class="hljs-number">90.8789</span>, <span class="hljs-number">46.3184</span>), (<span class="hljs-number">91.0547</span>, <span class="hljs-number">46.0107</span>), (<span class="hljs-number">90.7031</span>, <span class="hljs-number">45.7471</span>), (<span class="hljs-number">90.7031</span>, <span class="hljs-number">45.5273</span>), (<span class="hljs-number">90.8789</span>, <span class="hljs-number">45.2197</span>), (<span class="hljs-number">91.582</span>, <span class="hljs-number">45.0879</span>), (<span class="hljs-number">93.5156</span>, <span class="hljs-number">44.9561</span>), (<span class="hljs-number">94.7461</span>, <span class="hljs-number">44.3408</span>), (<span class="hljs-number">95.3613</span>, <span class="hljs-number">44.2969</span>), (<span class="hljs-number">95.3613</span>, <span class="hljs-number">44.0332</span>), (<span class="hljs-number">95.5371</span>, <span class="hljs-number">43.9014</span>), (<span class="hljs-number">95.8887</span>, <span class="hljs-number">43.2422</span>), (<span class="hljs-number">96.3281</span>, <span class="hljs-number">42.9346</span>), (<span class="hljs-number">96.416</span>, <span class="hljs-number">42.7588</span>)]]}, <span class="hljs-string">&apos;properties&apos;</span>: OrderedDict([(<span class="hljs-string">&apos;Name&apos;</span>, <span class="hljs-string">&apos;&#x65B0;&#x7586;&#x7EF4;&#x543E;&#x5C14;&#x81EA;&#x6CBB;&#x533A;&apos;</span>), (<span class="hljs-string">&apos;CenterX&apos;</span>, <span class="hljs-number">84.9023</span>), (<span class="hljs-string">&apos;CenterY&apos;</span>, <span class="hljs-number">42.148</span>)])}
+</code></pre>
+<h2 id="shapefile&#x6570;&#x636E;&#x8BFB;&#x53D6;">Shapefile&#x6570;&#x636E;&#x8BFB;&#x53D6;</h2>
+<p>&#x4E0B;&#x9762;&#x6211;&#x4EEC;&#x6765;&#x4F53;&#x9A8C;&#x4E00;&#x4E0B;Fiona&#x7684;&#x7B80;&#x6D01;&#x4E4B;&#x5904;&#xFF0C;&#x4E3B;&#x8981;&#x662F;&#x4F7F;&#x7528;Python&#x5185;&#x7F6E;&#x7684;&#x7ED3;&#x6784;&#x8868;&#x793A;&#x6240;&#x6709;&#x6570;&#x636E;&#xFF0C;&#x6240;&#x4EE5;&#x4F7F;&#x7528;Fiona&#x64CD;&#x4F5C;&#x7A7A;&#x95F4;&#x6570;&#x636E;&#x5C31;&#x50CF;&#x64CD;&#x4F5C;Python&#x5185;&#x7F6E;&#x7684;&#x6570;&#x636E;&#x7ED3;&#x6784;&#x4E00;&#x6837;&#x7B80;&#x5355;&#x3002;</p>
+<pre><code class="lang-Python"><span class="hljs-keyword">import</span> fiona
+
+<span class="hljs-keyword">with</span> fiona.open(<span class="hljs-string">&apos;China.shp&apos;</span>, encoding=<span class="hljs-string">&apos;utf-8&apos;</span>) <span class="hljs-keyword">as</span> c:
+    <span class="hljs-comment"># &#x8F93;&#x51FA;&#x6570;&#x636E;&#x7684;&#x57FA;&#x672C;&#x4FE1;&#x606F;</span>
+    print(f<span class="hljs-string">&apos;&#x6570;&#x636E;&#x8303;&#x56F4;&#xFF1A;{c.bounds}&apos;</span>)
+    print(f<span class="hljs-string">&apos;&#x6295;&#x5F71;&#x5B9A;&#x4E49;&#xFF1A;{c.crs}&apos;</span>)
+    print(f<span class="hljs-string">&apos;&#x6570;&#x636E;&#x683C;&#x5F0F;&#xFF1A;{c.driver}&apos;</span>)
+    print(f<span class="hljs-string">&apos;&#x6570;&#x636E;&#x7F16;&#x7801;&#xFF1A;{c.encoding}&apos;</span>)
+    <span class="hljs-comment"># &#x8F93;&#x51FA;&#x6587;&#x4EF6;&#x7684;&#x5C5E;&#x6027;&#x5B57;&#x6BB5;&#x4FE1;&#x606F;</span>
+    fields = c.schema[<span class="hljs-string">&apos;properties&apos;</span>]
+    print(<span class="hljs-string">&apos;&#x6587;&#x4EF6;&#x7684;&#x5C5E;&#x6027;&#x5B57;&#x6BB5;&#x4FE1;&#x606F;&#xFF1A;&apos;</span>)
+    <span class="hljs-keyword">for</span> k, v <span class="hljs-keyword">in</span> fields.items():
+        print(f<span class="hljs-string">&apos;{k} -&gt; {v}&apos;</span>)
+    <span class="hljs-comment"># &#x904D;&#x5386;&#x96C6;&#x5408;&#x4E2D;&#x7684;&#x8981;&#x7D20;</span>
+    <span class="hljs-comment"># f&#x662F;&#x4E00;&#x4E2A;tuple&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x5143;&#x7D20;&#x662F;&#x8981;&#x7D20;&#x7F16;&#x53F7;&#xFF0C;&#x7B2C;&#x4E8C;&#x4E2A;&#x662F;dict&#x683C;&#x5F0F;&#x7684;&#x8981;&#x7D20;</span>
+    <span class="hljs-keyword">for</span> f <span class="hljs-keyword">in</span> c.items():
+        <span class="hljs-comment"># &#x8F93;&#x5165;&#x8981;&#x7D20;&#x7684;&#x8BE6;&#x7EC6;&#x4FE1;&#x606F;</span>
+        <span class="hljs-comment"># &#x8981;&#x7D20;&#x662F;&#x4EE5;GeoJSON&#x8868;&#x793A;&#x7684;</span>
+        print(f[<span class="hljs-number">1</span>][<span class="hljs-string">&apos;properties&apos;</span>][<span class="hljs-string">&apos;Name&apos;</span>])
+</code></pre>
+<p>&#x7279;&#x522B;&#x9700;&#x8981;&#x6CE8;&#x610F;&#x6570;&#x636E;&#x7684;&#x7F16;&#x7801;&#x95EE;&#x9898;&#xFF0C;&#x8981;&#x4E0D;&#x7136;&#x9ED8;&#x8BA4;&#x7684;&#x7F16;&#x7801;&#x4F1A;&#x5F15;&#x8D77;&#x4E2D;&#x6587;&#x4E71;&#x7801;&#xFF0C;&#x5E38;&#x89C1;&#x4E2D;&#x6587;&#x7F16;&#x7801;&#x53EF;&#x80FD;&#x91C7;&#x7528;GBK&#x6216;&#x8005;UTF-8&#x7B49;&#x3002;</p>
+<p>&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>&#x6570;&#x636E;&#x8303;&#x56F4;&#xFF1A;(73.4766, 18.1055, 135.0879, 53.5693)
+&#x6295;&#x5F71;&#x5B9A;&#x4E49;&#xFF1A;{&apos;init&apos;: &apos;epsg:4326&apos;}
+&#x6570;&#x636E;&#x683C;&#x5F0F;&#xFF1A;ESRI Shapefile
+&#x6570;&#x636E;&#x7F16;&#x7801;&#xFF1A;utf-8
+&#x6587;&#x4EF6;&#x7684;&#x5C5E;&#x6027;&#x5B57;&#x6BB5;&#x4FE1;&#x606F;&#xFF1A;
+Name -&gt; str:24
+CenterX -&gt; float:24.15
+CenterY -&gt; float:24.15
+&#x65B0;&#x7586;&#x7EF4;&#x543E;&#x5C14;&#x81EA;&#x6CBB;&#x533A;
+&#x897F;&#x85CF;&#x81EA;&#x6CBB;&#x533A;
+&#x5185;&#x8499;&#x53E4;&#x81EA;&#x6CBB;&#x533A;
+&#x9752;&#x6D77;&#x7701;
+&#x56DB;&#x5DDD;&#x7701;
+&#x9ED1;&#x9F99;&#x6C5F;&#x7701;
+&#x7518;&#x8083;&#x7701;
+&#x4E91;&#x5357;&#x7701;
+&#x5E7F;&#x897F;&#x58EE;&#x65CF;&#x81EA;&#x6CBB;&#x533A;
+&#x6E56;&#x5357;&#x7701;
+&#x9655;&#x897F;&#x7701;
+&#x5E7F;&#x4E1C;&#x7701;
+&#x5409;&#x6797;&#x7701;
+&#x6CB3;&#x5317;&#x7701;
+&#x6E56;&#x5317;&#x7701;
+&#x8D35;&#x5DDE;&#x7701;
+&#x5C71;&#x4E1C;&#x7701;
+&#x6C5F;&#x897F;&#x7701;
+&#x6CB3;&#x5357;&#x7701;
+&#x8FBD;&#x5B81;&#x7701;
+&#x5C71;&#x897F;&#x7701;
+&#x5B89;&#x5FBD;&#x7701;
+&#x798F;&#x5EFA;&#x7701;
+&#x6D59;&#x6C5F;&#x7701;
+&#x6C5F;&#x82CF;&#x7701;
+&#x91CD;&#x5E86;&#x5E02;
+&#x5B81;&#x590F;&#x56DE;&#x65CF;&#x81EA;&#x6CBB;&#x533A;
+&#x6D77;&#x5357;&#x7701;
+&#x53F0;&#x6E7E;&#x7701;
+&#x5317;&#x4EAC;&#x5E02;
+&#x5929;&#x6D25;&#x5E02;
+&#x4E0A;&#x6D77;&#x5E02;
+&#x9999;&#x6E2F;&#x7279;&#x522B;&#x884C;&#x653F;&#x533A;
+&#x6FB3;&#x95E8;&#x7279;&#x522B;&#x884C;&#x653F;&#x533A;
+</code></pre>
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="REDAME.md" class="navigation navigation-prev " aria-label="Previous page: Fiona矢量数据处理">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="使用Fiona创建Shapefile矢量数据.html" class="navigation navigation-next " aria-label="Next page: 使用Fiona创建Shapefile矢量数据">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"Fiona简介及Shapefile数据读取","level":"1.4.3.1","depth":3,"next":{"title":"使用Fiona创建Shapefile矢量数据","level":"1.4.3.2","depth":3,"path":"GDAL空间数据处理/Fiona矢量数据处理/使用Fiona创建Shapefile矢量数据.md","ref":"GDAL空间数据处理/Fiona矢量数据处理/使用Fiona创建Shapefile矢量数据.md","articles":[]},"previous":{"title":"Fiona矢量数据处理","level":"1.4.3","depth":2,"path":"GDAL空间数据处理/Fiona矢量数据处理/REDAME.md","ref":"GDAL空间数据处理/Fiona矢量数据处理/REDAME.md","articles":[{"title":"Fiona简介及Shapefile数据读取","level":"1.4.3.1","depth":3,"path":"GDAL空间数据处理/Fiona矢量数据处理/Fiona简介及Shapefile数据读取.md","ref":"GDAL空间数据处理/Fiona矢量数据处理/Fiona简介及Shapefile数据读取.md","articles":[]},{"title":"使用Fiona创建Shapefile矢量数据","level":"1.4.3.2","depth":3,"path":"GDAL空间数据处理/Fiona矢量数据处理/使用Fiona创建Shapefile矢量数据.md","ref":"GDAL空间数据处理/Fiona矢量数据处理/使用Fiona创建Shapefile矢量数据.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"GDAL空间数据处理/Fiona矢量数据处理/Fiona简介及Shapefile数据读取.md","mtime":"2019-03-22T18:52:30.703Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-22T20:04:12.549Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

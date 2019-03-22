@@ -1,0 +1,806 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>打开栅格数据的正确方式 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="栅格数据格式转换.html" />
+    
+    
+    <link rel="prev" href="../GDAL数据基本操作.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../Python基础/">
+            
+                <a href="../../Python基础/">
+            
+                    
+                    Python基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../Python基础/Python环境搭建及基本数据类型.html">
+            
+                <a href="../../Python基础/Python环境搭建及基本数据类型.html">
+            
+                    
+                    Python环境搭建及基本数据类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../Python基础/运算符及字符串.html">
+            
+                <a href="../../Python基础/运算符及字符串.html">
+            
+                    
+                    运算符及字符串
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../Python基础/序列与字典.html">
+            
+                <a href="../../Python基础/序列与字典.html">
+            
+                    
+                    序列与字典
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../../Python基础/流程控制语句.html">
+            
+                <a href="../../Python基础/流程控制语句.html">
+            
+                    
+                    流程控制语句
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../../Python基础/函数.html">
+            
+                <a href="../../Python基础/函数.html">
+            
+                    
+                    函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../../Python基础/面向对象编程初识.html">
+            
+                <a href="../../Python基础/面向对象编程初识.html">
+            
+                    
+                    面向对象编程初识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../../Python基础/面向对象编程高级.html">
+            
+                <a href="../../Python基础/面向对象编程高级.html">
+            
+                    
+                    面向对象编程高级
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../../Python基础/Python科学计算.html">
+            
+                <a href="../../Python基础/Python科学计算.html">
+            
+                    
+                    Python科学计算
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../../Python基础/空间数据处理环境搭建.html">
+            
+                <a href="../../Python基础/空间数据处理环境搭建.html">
+            
+                    
+                    空间数据处理环境搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../空间数据基础/">
+            
+                <a href="../../空间数据基础/">
+            
+                    
+                    空间数据基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../空间数据基础/空间参考系统.html">
+            
+                <a href="../../空间数据基础/空间参考系统.html">
+            
+                    
+                    空间参考系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../空间数据基础/地图投影.html">
+            
+                <a href="../../空间数据基础/地图投影.html">
+            
+                    
+                    地图投影
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../../空间数据基础/空间数据.html">
+            
+                <a href="../../空间数据基础/空间数据.html">
+            
+                    
+                    空间数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    GDAL空间数据处理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../GDAL简介.html">
+            
+                <a href="../GDAL简介.html">
+            
+                    
+                    GDAL简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../GDAL数据基本操作.html">
+            
+                <a href="../GDAL数据基本操作.html">
+            
+                    
+                    GDAL数据基本操作
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter active" data-level="1.4.2.1" data-path="打开栅格数据的正确方式.html">
+            
+                <a href="打开栅格数据的正确方式.html">
+            
+                    
+                    打开栅格数据的正确方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.2" data-path="栅格数据格式转换.html">
+            
+                <a href="栅格数据格式转换.html">
+            
+                    
+                    栅格数据格式转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.3" data-path="栅格数据创建与保存.html">
+            
+                <a href="栅格数据创建与保存.html">
+            
+                    
+                    栅格数据创建与保存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.4" data-path="读取HDF或者NetCDF格式的栅格数据.html">
+            
+                <a href="读取HDF或者NetCDF格式的栅格数据.html">
+            
+                    
+                    读取HDF或者NetCDF格式的栅格数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.5" data-path="栅格数据投影转换.html">
+            
+                <a href="栅格数据投影转换.html">
+            
+                    
+                    栅格数据投影转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.6" data-path="栅格数据裁剪.html">
+            
+                <a href="栅格数据裁剪.html">
+            
+                    
+                    栅格数据裁剪
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.7" data-path="打开Shapefile文件的正确方式.html">
+            
+                <a href="打开Shapefile文件的正确方式.html">
+            
+                    
+                    打开Shapefile文件的正确方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.8" data-path="创建Shapefile文件并写入数据.html">
+            
+                <a href="创建Shapefile文件并写入数据.html">
+            
+                    
+                    创建Shapefile文件并写入数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.9" data-path="矢量数据投影转换.html">
+            
+                <a href="矢量数据投影转换.html">
+            
+                    
+                    矢量数据投影转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../Fiona矢量数据处理/REDAME.md">
+            
+                <span>
+            
+                    
+                    Fiona矢量数据处理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.1" data-path="../Fiona矢量数据处理/Fiona简介及Shapefile数据读取.html">
+            
+                <a href="../Fiona矢量数据处理/Fiona简介及Shapefile数据读取.html">
+            
+                    
+                    Fiona简介及Shapefile数据读取
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.2" data-path="../Fiona矢量数据处理/使用Fiona创建Shapefile矢量数据.html">
+            
+                <a href="../Fiona矢量数据处理/使用Fiona创建Shapefile矢量数据.html">
+            
+                    
+                    使用Fiona创建Shapefile矢量数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../Rasterio栅格数据处理/README.md">
+            
+                <span>
+            
+                    
+                    Rasterio栅格数据处理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.4.1" data-path="../Rasterio栅格数据处理/使用Rasterio读取栅格数据.html">
+            
+                <a href="../Rasterio栅格数据处理/使用Rasterio读取栅格数据.html">
+            
+                    
+                    使用Rasterio读取栅格数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.2" data-path="../Rasterio栅格数据处理/使用Rasterio创建栅格数据.html">
+            
+                <a href="../Rasterio栅格数据处理/使用Rasterio创建栅格数据.html">
+            
+                    
+                    使用Rasterio创建栅格数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.3" data-path="../Rasterio栅格数据处理/使用Rasterio做投影变换.html">
+            
+                <a href="../Rasterio栅格数据处理/使用Rasterio做投影变换.html">
+            
+                    
+                    使用Rasterio做投影变换
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >打开栅格数据的正确方式</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x6253;&#x5F00;&#x6805;&#x683C;&#x6570;&#x636E;&#x7684;&#x6B63;&#x786E;&#x65B9;&#x5F0F;">&#x6253;&#x5F00;&#x6805;&#x683C;&#x6570;&#x636E;&#x7684;&#x6B63;&#x786E;&#x65B9;&#x5F0F;</h1>
+<p>&#x4F5C;&#x8005;&#xFF1A;&#x963F;&#x632F;</p>
+<p>&#x90AE;&#x7BB1;&#xFF1A;tanzhenyugis@163.com</p>
+<p>&#x535A;&#x5BA2;&#xFF1A;<a href="https://blog.csdn.net/theonegis/article/details/80089375" target="_blank">https://blog.csdn.net/theonegis/article/details/80089375</a></p>
+<p>&#x4FEE;&#x6539;&#x65F6;&#x95F4;&#xFF1A;2018-05-16</p>
+<p>&#x58F0;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x535A;&#x4E3B;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x8F6C;&#x8F7D;&#x8BF7;&#x6CE8;&#x660E;&#x539F;&#x6587;&#x51FA;&#x5904;</p>
+<hr>
+<h2 id="&#x4EE5;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x4F8B;&#x5B50;&#x8BF4;&#x660E;&#x5982;&#x4F55;&#x6253;&#x5F00;&#x6805;&#x683C;&#x5F71;&#x50CF;">&#x4EE5;&#x4E00;&#x4E2A;&#x7B80;&#x5355;&#x4F8B;&#x5B50;&#x8BF4;&#x660E;&#x5982;&#x4F55;&#x6253;&#x5F00;&#x6805;&#x683C;&#x5F71;&#x50CF;</h2>
+<p>&#x4E0B;&#x9762;&#x7684;&#x4F8B;&#x5B50;&#x6253;&#x5F00;&#x4E00;&#x526F;GeoTIFF&#x5F71;&#x50CF;&#xFF0C;&#x8F93;&#x51FA;&#x4E86;&#x5F71;&#x50CF;&#x7684;&#x4E00;&#x4E9B;&#x4FE1;&#x606F;&#xFF0C;&#x7136;&#x540E;&#x904D;&#x5386;&#x4E86;&#x6240;&#x6709;&#x6CE2;&#x6BB5;&#xFF0C;&#x8F93;&#x51FA;&#x6CE2;&#x6BB5;&#x7684;&#x4E00;&#x4E9B;&#x4FE1;&#x606F;</p>
+<pre><code class="lang-Python"><span class="hljs-keyword">import</span> gdal
+
+<span class="hljs-comment"># &#x6253;&#x5F00;&#x6805;&#x683C;&#x6570;&#x636E;&#x96C6;</span>
+ds = gdal.Open(<span class="hljs-string">&apos;example.tif&apos;</span>)
+
+<span class="hljs-comment"># &#x83B7;&#x5F97;&#x6805;&#x683C;&#x6570;&#x636E;&#x7684;&#x4E00;&#x4E9B;&#x91CD;&#x8981;&#x4FE1;&#x606F;</span>
+print(f<span class="hljs-string">&apos;&#x6295;&#x5F71;&#x4FE1;&#x606F;&#xFF1A;{ds.GetProjection()}&apos;</span>)
+print(f<span class="hljs-string">&apos;&#x6805;&#x683C;&#x6CE2;&#x6BB5;&#x6570;&#xFF1A;{ds.RasterCount}&apos;</span>)
+print(f<span class="hljs-string">&apos;&#x6805;&#x683C;&#x5217;&#x6570;&#xFF08;&#x5BBD;&#x5EA6;&#xFF09;&#xFF1A;{ds.RasterXSize}&apos;</span>)
+print(f<span class="hljs-string">&apos;&#x6805;&#x683C;&#x884C;&#x6570;&#xFF08;&#x9AD8;&#x5EA6;&#xFF09;&#xFF1A;{ds.RasterYSize}&apos;</span>)
+
+<span class="hljs-comment"># &#x83B7;&#x53D6;&#x6570;&#x636E;&#x96C6;&#x7684;&#x5143;&#x6570;&#x636E;&#x4FE1;&#x606F;</span>
+metadata = ds.GetMetadata_Dict()
+<span class="hljs-keyword">for</span> key, value <span class="hljs-keyword">in</span> metadata.items():
+    print(f<span class="hljs-string">&apos;{key} -&gt; {value}&apos;</span>)
+
+
+<span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> range(ds.RasterCount):
+    <span class="hljs-comment"># &#x6CE8;&#x610F;GDAL&#x4E2D;&#x7684;band&#x8BA1;&#x6570;&#x662F;&#x4ECE;1&#x5F00;&#x59CB;&#x7684;</span>
+    band = ds.GetRasterBand(b + <span class="hljs-number">1</span>)
+    <span class="hljs-comment"># &#x6CE2;&#x6BB5;&#x6570;&#x636E;&#x7684;&#x4E00;&#x4E9B;&#x4FE1;&#x606F;</span>
+    print(f<span class="hljs-string">&apos;&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF1A;{gdal.GetDataTypeName(band.DataType)}&apos;</span>)  <span class="hljs-comment"># DataType&#x5C5E;&#x6027;&#x8FD4;&#x56DE;&#x7684;&#x662F;&#x6570;&#x5B57;</span>
+    print(f<span class="hljs-string">&apos;NoData&#x503C;&#xFF1A;{band.GetNoDataValue()}&apos;</span>)  <span class="hljs-comment"># &#x5F88;&#x591A;&#x5F71;&#x50CF;&#x90FD;&#x662F;NoData&#xFF0C;&#x6211;&#x4EEC;&#x5728;&#x505A;&#x6570;&#x636E;&#x5904;&#x7406;&#x65F6;&#x8981;&#x7279;&#x522B;&#x5BF9;&#x5F85;</span>
+    print(f<span class="hljs-string">&apos;&#x7EDF;&#x8BA1;&#x503C;&#xFF08;&#x6700;&#x5927;&#x503C;&#x6700;&#x5C0F;&#x503C;&#xFF09;&#xFF1A;{band.ComputeRasterMinMax()}&apos;</span>)  <span class="hljs-comment"># &#x6709;&#x4E9B;&#x6570;&#x636E;&#x672C;&#x8EAB;&#x5C31;&#x5B58;&#x50A8;&#x4E86;&#x7EDF;&#x8BA1;&#x4FE1;&#x606F;&#xFF0C;&#x6709;&#x4E9B;&#x6570;&#x636E;&#x6CA1;&#x6709;&#x9700;&#x8981;&#x8BA1;&#x7B97;</span>
+
+<span class="hljs-comment"># &#x5173;&#x95ED;&#x6570;&#x636E;&#x96C6;</span>
+ds = <span class="hljs-keyword">None</span>
+</code></pre>
+<p>&#x8F93;&#x51FA;&#x5982;&#x4E0B;&#xFF1A;</p>
+<pre><code>&#x6295;&#x5F71;&#x4FE1;&#x606F;&#xFF1A;PROJCS[&quot;WGS 84 / UTM zone 49N&quot;,GEOGCS[&quot;WGS 84&quot;,DATUM[&quot;WGS_1984&quot;,SPHEROID[&quot;WGS 84&quot;,6378137,298.257223563,AUTHORITY[&quot;EPSG&quot;,&quot;7030&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;6326&quot;]],PRIMEM[&quot;Greenwich&quot;,0,AUTHORITY[&quot;EPSG&quot;,&quot;8901&quot;]],UNIT[&quot;degree&quot;,0.0174532925199433,AUTHORITY[&quot;EPSG&quot;,&quot;9122&quot;]],AUTHORITY[&quot;EPSG&quot;,&quot;4326&quot;]],PROJECTION[&quot;Transverse_Mercator&quot;],PARAMETER[&quot;latitude_of_origin&quot;,0],PARAMETER[&quot;central_meridian&quot;,111],PARAMETER[&quot;scale_factor&quot;,0.9996],PARAMETER[&quot;false_easting&quot;,500000],PARAMETER[&quot;false_northing&quot;,0],UNIT[&quot;metre&quot;,1,AUTHORITY[&quot;EPSG&quot;,&quot;9001&quot;]],AXIS[&quot;Easting&quot;,EAST],AXIS[&quot;Northing&quot;,NORTH],AUTHORITY[&quot;EPSG&quot;,&quot;32649&quot;]]
+&#x6805;&#x683C;&#x6CE2;&#x6BB5;&#x6570;&#xFF1A;3
+&#x6805;&#x683C;&#x5217;&#x6570;&#xFF08;&#x5BBD;&#x5EA6;&#xFF09;&#xFF1A;4800
+&#x6805;&#x683C;&#x884C;&#x6570;&#xFF08;&#x9AD8;&#x5EA6;&#xFF09;&#xFF1A;4800
+AREA_OR_POINT -&gt; Area
+&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF1A;Int16
+NoData&#x503C;&#xFF1A;-28672.0
+&#x7EDF;&#x8BA1;&#x503C;&#xFF08;&#x6700;&#x5927;&#x503C;&#x6700;&#x5C0F;&#x503C;&#xFF09;&#xFF1A;(-435.0, 6134.0)
+&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF1A;Int16
+NoData&#x503C;&#xFF1A;-28672.0
+&#x7EDF;&#x8BA1;&#x503C;&#xFF08;&#x6700;&#x5927;&#x503C;&#x6700;&#x5C0F;&#x503C;&#xFF09;&#xFF1A;(-468.0, 6265.0)
+&#x6570;&#x636E;&#x7C7B;&#x578B;&#xFF1A;Int16
+NoData&#x503C;&#xFF1A;-28672.0
+&#x7EDF;&#x8BA1;&#x503C;&#xFF08;&#x6700;&#x5927;&#x503C;&#x6700;&#x5C0F;&#x503C;&#xFF09;&#xFF1A;(21.0, 7267.0)
+</code></pre><h2 id="&#x5982;&#x4F55;&#x5C06;dataset&#x8F6C;&#x4E3A;numpy&#x7684;ndarray">&#x5982;&#x4F55;&#x5C06;Dataset&#x8F6C;&#x4E3A;Numpy&#x7684;ndarray</h2>
+<p>&#x5F53;&#x6211;&#x4EEC;&#x5F97;&#x5230;<code>Band</code>&#x5BF9;&#x8C61;&#x4EE5;&#x540E;&#xFF0C;&#x5982;&#x679C;&#x6309;&#x7167;GDAL&#x7684;C/C++&#x63A5;&#x53E3;&#x60EF;&#x4F8B;&#xFF0C;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x4F7F;&#x7528;<code>WriteRaster()</code>&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x5199;&#x5165;&#xFF08;C/C++&#x63A5;&#x53E3;&#x662F;<code>WriteBlock()</code>&#xFF09;&#xFF0C;&#x4F46;&#x662F;&#x5728;Python&#x4E2D;&#x6211;&#x4EEC;&#x6709;&#x5F88;&#x5F3A;&#x5927;&#x7684;<code>ndarray</code>&#x5BF9;&#x8C61;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x4E00;&#x822C;&#x662F;&#x5C06;<code>Band</code>&#x5BF9;&#x8C61;&#x4E2D;&#x5B58;&#x50A8;&#x7684;&#x6570;&#x636E;&#x8F6C;&#x4E3A;<code>ndarray</code>&#x8FDB;&#x884C;&#x5904;&#x7406;&#x4EE5;&#x540E;&#xFF0C;&#x7136;&#x540E;&#x518D;&#x5199;&#x56DE;&#x53BB;&#x3002;</p>
+<p>&#x4E0B;&#x9762;&#x4ECB;&#x7ECD;&#x51E0;&#x79CD;&#x8F6C;&#x6362;&#x7684;&#x65B9;&#x6CD5;&#xFF1A;</p>
+<ol>
+<li><p>&#x5728;<code>Dataset</code>&#x7EA7;&#x522B;&#x8FDB;&#x884C;&#x8F6C;&#x6362;&#xFF0C;&#x8F6C;&#x6362;&#x7ED3;&#x679C;&#x662F;&#x4E00;&#x4E2A;&#x4E09;&#x7EF4;&#x6570;&#x7EC4;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x7EF4;&#x5EA6;&#x662F;&#x6CE2;&#x6BB5;&#x6570;</p>
+</li>
+<li><p>&#x5728;<code>Band</code>&#x7EA7;&#x522B;&#x8FDB;&#x884C;&#x8F6C;&#x6362;&#xFF0C;&#x8F6C;&#x6362;&#x7684;&#x7ED3;&#x679C;&#x662F;&#x4E00;&#x4E2A;&#x4E8C;&#x7EF4;&#x6570;&#x636E;</p>
+</li>
+<li><p>&#x4F7F;&#x7528;<code>gdal_array</code>&#x6A21;&#x5757;&#x4E2D;&#x7684;<code>LoadFile()</code>&#x51FD;&#x6570;&#x76F4;&#x63A5;&#x8FDB;&#x884C;&#xFF08;&#x76F8;&#x5F53;&#x4E8E;&#x7B2C;&#x4E00;&#x79CD;&#x8F6C;&#x6362;&#xFF09;</p>
+</li>
+</ol>
+<pre><code class="lang-Python"><span class="hljs-keyword">import</span> gdal
+
+<span class="hljs-comment"># &#x6253;&#x5F00;&#x6805;&#x683C;&#x6570;&#x636E;&#x96C6;</span>
+ds = gdal.Open(<span class="hljs-string">&apos;example.tif&apos;</span>)
+<span class="hljs-comment"># &#x5728;&#x6570;&#x636E;&#x96C6;&#x5C42;&#x9762;&#x8F6C;&#x6362;</span>
+image = ds.ReadAsArray()
+
+print(f<span class="hljs-string">&apos;&#x6570;&#x636E;&#x7684;&#x5C3A;&#x5BF8;&#xFF1A;{image.shape}&apos;</span>)
+<span class="hljs-comment"># &#x8F93;&#x51FA;&#x7ED3;&#x679C;&#x4E3A;&#xFF1A;&#x6570;&#x636E;&#x7684;&#x5C3A;&#x5BF8;&#xFF1A;(3, 4800, 4800)</span>
+<span class="hljs-comment"># &#x8FD9;&#x8BF4;&#x660E;ReadAsArray&#x65B9;&#x6CD5;&#x5C06;&#x6BCF;&#x4E2A;&#x6CE2;&#x6BB5;&#x90FD;&#x8F6C;&#x6362;&#x4E3A;&#x4E86;&#x4E00;&#x4E2A;&#x4E8C;&#x7EF4;&#x6570;&#x7EC4;</span>
+
+<span class="hljs-comment"># &#x83B7;&#x5F97;&#x7B2C;&#x4E00;&#x4E2A;&#x6CE2;&#x6BB5;&#x7684;&#x6570;&#x636E;</span>
+band1 = image[<span class="hljs-number">0</span>]
+
+<span class="hljs-comment"># &#x5728;&#x6CE2;&#x6BB5;&#x5C42;&#x9762;&#x7684;&#x8F6C;&#x6362;</span>
+<span class="hljs-keyword">for</span> b <span class="hljs-keyword">in</span> range(ds.RasterCount):
+    <span class="hljs-comment"># &#x6CE8;&#x610F;GDAL&#x4E2D;&#x7684;band&#x8BA1;&#x6570;&#x662F;&#x4ECE;1&#x5F00;&#x59CB;&#x7684;</span>
+    band = ds.GetRasterBand(b + <span class="hljs-number">1</span>)
+    band = band.ReadAsArray()
+    print(f<span class="hljs-string">&apos;&#x6CE2;&#x6BB5;&#x5927;&#x5C0F;&#xFF1A;{band.shape}&apos;</span>)
+
+<span class="hljs-comment"># &#x5173;&#x95ED;&#x6570;&#x636E;&#x96C6;</span>
+ds = <span class="hljs-keyword">None</span>
+</code></pre>
+<p>&#x8F93;&#x51FA;&#x7ED3;&#x679C;&#xFF1A;</p>
+<pre><code>&#x6570;&#x636E;&#x7684;&#x5C3A;&#x5BF8;&#xFF1A;(3, 4800, 4800)
+&#x6CE2;&#x6BB5;&#x5927;&#x5C0F;&#xFF1A;(4800, 4800)
+&#x6CE2;&#x6BB5;&#x5927;&#x5C0F;&#xFF1A;(4800, 4800)
+&#x6CE2;&#x6BB5;&#x5927;&#x5C0F;&#xFF1A;(4800, 4800)
+</code></pre><p>&#x4F7F;&#x7528;<code>gdal_array</code>&#x6A21;&#x5757;</p>
+<pre><code class="lang-Python"><span class="hljs-keyword">from</span> osgeo <span class="hljs-keyword">import</span> gdal_array
+<span class="hljs-comment"># gdal_array&#x6A21;&#x5757;</span>
+image = gdal_array.LoadFile(<span class="hljs-string">&apos;example.tif&apos;</span>)
+print(f<span class="hljs-string">&apos;&#x6570;&#x636E;&#x7684;&#x5C3A;&#x5BF8;&#xFF1A;{image.shape}&apos;</span>)
+</code></pre>
+<h2 id="&#x5728;gdal&#x4E2D;&#x4F7F;&#x7528;python&#x7684;&#x5F02;&#x5E38;&#x5BF9;&#x8C61;">&#x5728;GDAL&#x4E2D;&#x4F7F;&#x7528;Python&#x7684;&#x5F02;&#x5E38;&#x5BF9;&#x8C61;</h2>
+<pre><code class="lang-Python"><span class="hljs-keyword">import</span> gdal
+<span class="hljs-keyword">import</span> sys
+
+<span class="hljs-comment"># &#x5141;&#x8BB8;GDAL&#x8DD1;&#x51FA;Python&#x5F02;&#x5E38;</span>
+gdal.UseExceptions()
+
+<span class="hljs-keyword">try</span>:
+    ds = gdal.Open(<span class="hljs-string">&apos;example.tif&apos;</span>)
+<span class="hljs-keyword">except</span> (FileNotFoundError, RuntimeError) <span class="hljs-keyword">as</span> e:
+    print(<span class="hljs-string">&apos;&#x6587;&#x4EF6;&#x6253;&#x5F00;&#x5931;&#x8D25;&#xFF01;&apos;</span>)
+    print(e)
+    sys.exit(<span class="hljs-number">1</span>)
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="../GDAL数据基本操作.html" class="navigation navigation-prev " aria-label="Previous page: GDAL数据基本操作">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="栅格数据格式转换.html" class="navigation navigation-next " aria-label="Next page: 栅格数据格式转换">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"打开栅格数据的正确方式","level":"1.4.2.1","depth":3,"next":{"title":"栅格数据格式转换","level":"1.4.2.2","depth":3,"path":"GDAL空间数据处理/GDAL数据基本操作/栅格数据格式转换.md","ref":"GDAL空间数据处理/GDAL数据基本操作/栅格数据格式转换.md","articles":[]},"previous":{"title":"GDAL数据基本操作","level":"1.4.2","depth":2,"path":"GDAL空间数据处理/GDAL数据基本操作.md","ref":"GDAL空间数据处理/GDAL数据基本操作.md","articles":[{"title":"打开栅格数据的正确方式","level":"1.4.2.1","depth":3,"path":"GDAL空间数据处理/GDAL数据基本操作/打开栅格数据的正确方式.md","ref":"GDAL空间数据处理/GDAL数据基本操作/打开栅格数据的正确方式.md","articles":[]},{"title":"栅格数据格式转换","level":"1.4.2.2","depth":3,"path":"GDAL空间数据处理/GDAL数据基本操作/栅格数据格式转换.md","ref":"GDAL空间数据处理/GDAL数据基本操作/栅格数据格式转换.md","articles":[]},{"title":"栅格数据创建与保存","level":"1.4.2.3","depth":3,"path":"GDAL空间数据处理/GDAL数据基本操作/栅格数据创建与保存.md","ref":"GDAL空间数据处理/GDAL数据基本操作/栅格数据创建与保存.md","articles":[]},{"title":"读取HDF或者NetCDF格式的栅格数据","level":"1.4.2.4","depth":3,"path":"GDAL空间数据处理/GDAL数据基本操作/读取HDF或者NetCDF格式的栅格数据.md","ref":"GDAL空间数据处理/GDAL数据基本操作/读取HDF或者NetCDF格式的栅格数据.md","articles":[]},{"title":"栅格数据投影转换","level":"1.4.2.5","depth":3,"path":"GDAL空间数据处理/GDAL数据基本操作/栅格数据投影转换.md","ref":"GDAL空间数据处理/GDAL数据基本操作/栅格数据投影转换.md","articles":[]},{"title":"栅格数据裁剪","level":"1.4.2.6","depth":3,"path":"GDAL空间数据处理/GDAL数据基本操作/栅格数据裁剪.md","ref":"GDAL空间数据处理/GDAL数据基本操作/栅格数据裁剪.md","articles":[]},{"title":"打开Shapefile文件的正确方式","level":"1.4.2.7","depth":3,"path":"GDAL空间数据处理/GDAL数据基本操作/打开Shapefile文件的正确方式.md","ref":"GDAL空间数据处理/GDAL数据基本操作/打开Shapefile文件的正确方式.md","articles":[]},{"title":"创建Shapefile文件并写入数据","level":"1.4.2.8","depth":3,"path":"GDAL空间数据处理/GDAL数据基本操作/创建Shapefile文件并写入数据.md","ref":"GDAL空间数据处理/GDAL数据基本操作/创建Shapefile文件并写入数据.md","articles":[]},{"title":"矢量数据投影转换","level":"1.4.2.9","depth":3,"path":"GDAL空间数据处理/GDAL数据基本操作/矢量数据投影转换.md","ref":"GDAL空间数据处理/GDAL数据基本操作/矢量数据投影转换.md","articles":[]}]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"GDAL空间数据处理/GDAL数据基本操作/打开栅格数据的正确方式.md","mtime":"2019-03-22T18:52:30.712Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-22T20:04:12.549Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+

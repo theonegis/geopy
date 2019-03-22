@@ -1,0 +1,875 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>栅格数据格式转换 · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="栅格数据创建与保存.html" />
+    
+    
+    <link rel="prev" href="打开栅格数据的正确方式.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="../../Python基础/">
+            
+                <a href="../../Python基础/">
+            
+                    
+                    Python基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="../../Python基础/Python环境搭建及基本数据类型.html">
+            
+                <a href="../../Python基础/Python环境搭建及基本数据类型.html">
+            
+                    
+                    Python环境搭建及基本数据类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.2" data-path="../../Python基础/运算符及字符串.html">
+            
+                <a href="../../Python基础/运算符及字符串.html">
+            
+                    
+                    运算符及字符串
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.3" data-path="../../Python基础/序列与字典.html">
+            
+                <a href="../../Python基础/序列与字典.html">
+            
+                    
+                    序列与字典
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.4" data-path="../../Python基础/流程控制语句.html">
+            
+                <a href="../../Python基础/流程控制语句.html">
+            
+                    
+                    流程控制语句
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.5" data-path="../../Python基础/函数.html">
+            
+                <a href="../../Python基础/函数.html">
+            
+                    
+                    函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.6" data-path="../../Python基础/面向对象编程初识.html">
+            
+                <a href="../../Python基础/面向对象编程初识.html">
+            
+                    
+                    面向对象编程初识
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.7" data-path="../../Python基础/面向对象编程高级.html">
+            
+                <a href="../../Python基础/面向对象编程高级.html">
+            
+                    
+                    面向对象编程高级
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.8" data-path="../../Python基础/Python科学计算.html">
+            
+                <a href="../../Python基础/Python科学计算.html">
+            
+                    
+                    Python科学计算
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2.9" data-path="../../Python基础/空间数据处理环境搭建.html">
+            
+                <a href="../../Python基础/空间数据处理环境搭建.html">
+            
+                    
+                    空间数据处理环境搭建
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../../空间数据基础/">
+            
+                <a href="../../空间数据基础/">
+            
+                    
+                    空间数据基础
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../../空间数据基础/空间参考系统.html">
+            
+                <a href="../../空间数据基础/空间参考系统.html">
+            
+                    
+                    空间参考系统
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.2" data-path="../../空间数据基础/地图投影.html">
+            
+                <a href="../../空间数据基础/地图投影.html">
+            
+                    
+                    地图投影
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3.3" data-path="../../空间数据基础/空间数据.html">
+            
+                <a href="../../空间数据基础/空间数据.html">
+            
+                    
+                    空间数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    GDAL空间数据处理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.1" data-path="../GDAL简介.html">
+            
+                <a href="../GDAL简介.html">
+            
+                    
+                    GDAL简介
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2" data-path="../GDAL数据基本操作.html">
+            
+                <a href="../GDAL数据基本操作.html">
+            
+                    
+                    GDAL数据基本操作
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.2.1" data-path="打开栅格数据的正确方式.html">
+            
+                <a href="打开栅格数据的正确方式.html">
+            
+                    
+                    打开栅格数据的正确方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.4.2.2" data-path="栅格数据格式转换.html">
+            
+                <a href="栅格数据格式转换.html">
+            
+                    
+                    栅格数据格式转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.3" data-path="栅格数据创建与保存.html">
+            
+                <a href="栅格数据创建与保存.html">
+            
+                    
+                    栅格数据创建与保存
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.4" data-path="读取HDF或者NetCDF格式的栅格数据.html">
+            
+                <a href="读取HDF或者NetCDF格式的栅格数据.html">
+            
+                    
+                    读取HDF或者NetCDF格式的栅格数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.5" data-path="栅格数据投影转换.html">
+            
+                <a href="栅格数据投影转换.html">
+            
+                    
+                    栅格数据投影转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.6" data-path="栅格数据裁剪.html">
+            
+                <a href="栅格数据裁剪.html">
+            
+                    
+                    栅格数据裁剪
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.7" data-path="打开Shapefile文件的正确方式.html">
+            
+                <a href="打开Shapefile文件的正确方式.html">
+            
+                    
+                    打开Shapefile文件的正确方式
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.8" data-path="创建Shapefile文件并写入数据.html">
+            
+                <a href="创建Shapefile文件并写入数据.html">
+            
+                    
+                    创建Shapefile文件并写入数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.2.9" data-path="矢量数据投影转换.html">
+            
+                <a href="矢量数据投影转换.html">
+            
+                    
+                    矢量数据投影转换
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3" data-path="../Fiona矢量数据处理/REDAME.md">
+            
+                <span>
+            
+                    
+                    Fiona矢量数据处理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.3.1" data-path="../Fiona矢量数据处理/Fiona简介及Shapefile数据读取.html">
+            
+                <a href="../Fiona矢量数据处理/Fiona简介及Shapefile数据读取.html">
+            
+                    
+                    Fiona简介及Shapefile数据读取
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.3.2" data-path="../Fiona矢量数据处理/使用Fiona创建Shapefile矢量数据.html">
+            
+                <a href="../Fiona矢量数据处理/使用Fiona创建Shapefile矢量数据.html">
+            
+                    
+                    使用Fiona创建Shapefile矢量数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4" data-path="../Rasterio栅格数据处理/README.md">
+            
+                <span>
+            
+                    
+                    Rasterio栅格数据处理
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.4.4.1" data-path="../Rasterio栅格数据处理/使用Rasterio读取栅格数据.html">
+            
+                <a href="../Rasterio栅格数据处理/使用Rasterio读取栅格数据.html">
+            
+                    
+                    使用Rasterio读取栅格数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.2" data-path="../Rasterio栅格数据处理/使用Rasterio创建栅格数据.html">
+            
+                <a href="../Rasterio栅格数据处理/使用Rasterio创建栅格数据.html">
+            
+                    
+                    使用Rasterio创建栅格数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.4.3" data-path="../Rasterio栅格数据处理/使用Rasterio做投影变换.html">
+            
+                <a href="../Rasterio栅格数据处理/使用Rasterio做投影变换.html">
+            
+                    
+                    使用Rasterio做投影变换
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >栅格数据格式转换</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x6805;&#x683C;&#x683C;&#x5F0F;&#x8F6C;&#x6362;">&#x6805;&#x683C;&#x683C;&#x5F0F;&#x8F6C;&#x6362;</h1>
+<p>&#x4F5C;&#x8005;&#xFF1A;&#x963F;&#x632F;</p>
+<p>&#x90AE;&#x7BB1;&#xFF1A;tanzhenyugis@163.com</p>
+<p>&#x535A;&#x5BA2;&#xFF1A;<a href="https://blog.csdn.net/theonegis/article/details/80089375" target="_blank">https://blog.csdn.net/theonegis/article/details/80089375</a></p>
+<p>&#x4FEE;&#x6539;&#x65F6;&#x95F4;&#xFF1A;2018-05-17</p>
+<p>&#x58F0;&#x660E;&#xFF1A;&#x672C;&#x6587;&#x4E3A;&#x535A;&#x4E3B;&#x539F;&#x521B;&#x6587;&#x7AE0;&#xFF0C;&#x8F6C;&#x8F7D;&#x8BF7;&#x6CE8;&#x660E;&#x539F;&#x6587;&#x51FA;&#x5904;</p>
+<hr>
+<h2 id="&#x67E5;&#x770B;gdal&#x652F;&#x6301;&#x7684;&#x6805;&#x683C;&#x6570;&#x636E;&#x683C;&#x5F0F;">&#x67E5;&#x770B;GDAL&#x652F;&#x6301;&#x7684;&#x6805;&#x683C;&#x6570;&#x636E;&#x683C;&#x5F0F;</h2>
+<p>&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;&#x7EC8;&#x7AEF;&#x4E2D;&#x4F7F;&#x7528;<code>gdal --formats</code>&#x547D;&#x4EE4;&#x67E5;&#x770B;&#x5B89;&#x88C5;&#x7684;GDAL&#x5E93;&#x652F;&#x6301;&#x7684;&#x6805;&#x683C;&#x6570;&#x636E;&#x683C;&#x5F0F;</p>
+<pre><code>Supported Formats:
+  VRT -raster- (rw+v): Virtual Raster
+  DERIVED -raster- (ro): Derived datasets using VRT pixel functions
+  GTiff -raster- (rw+vs): GeoTIFF
+  NITF -raster- (rw+vs): National Imagery Transmission Format
+  RPFTOC -raster- (rovs): Raster Product Format TOC format
+  ECRGTOC -raster- (rovs): ECRG TOC format
+  HFA -raster- (rw+v): Erdas Imagine Images (.img)
+  SAR_CEOS -raster- (rov): CEOS SAR Image
+  CEOS -raster- (rov): CEOS Image
+  JAXAPALSAR -raster- (rov): JAXA PALSAR Product Reader (Level 1.1/1.5)
+  GFF -raster- (rov): Ground-based SAR Applications Testbed File Format (.gff)
+  ELAS -raster- (rw+v): ELAS
+  AIG -raster- (rov): Arc/Info Binary Grid
+  AAIGrid -raster- (rwv): Arc/Info ASCII Grid
+  GRASSASCIIGrid -raster- (rov): GRASS ASCII Grid
+  SDTS -raster- (rov): SDTS Raster
+  DTED -raster- (rwv): DTED Elevation Raster
+  PNG -raster- (rwv): Portable Network Graphics
+  JPEG -raster- (rwv): JPEG JFIF
+  MEM -raster- (rw+): In Memory Raster
+  JDEM -raster- (rov): Japanese DEM (.mem)
+  GIF -raster- (rwv): Graphics Interchange Format (.gif)
+  BIGGIF -raster- (rov): Graphics Interchange Format (.gif)
+  ESAT -raster- (rov): Envisat Image Format
+  BSB -raster- (rov): Maptech BSB Nautical Charts
+  XPM -raster- (rwv): X11 PixMap Format
+  BMP -raster- (rw+v): MS Windows Device Independent Bitmap
+  DIMAP -raster- (rov): SPOT DIMAP
+  AirSAR -raster- (rov): AirSAR Polarimetric Image
+  RS2 -raster- (ros): RadarSat 2 XML Product
+  SAFE -raster- (rov): Sentinel-1 SAR SAFE Product
+  PCIDSK -raster,vector- (rw+v): PCIDSK Database File
+  PCRaster -raster- (rw+): PCRaster Raster File
+  ILWIS -raster- (rw+v): ILWIS Raster Map
+  SGI -raster- (rw+): SGI Image File Format 1.0
+  SRTMHGT -raster- (rwv): SRTMHGT File Format
+  Leveller -raster- (rw+): Leveller heightfield
+  Terragen -raster- (rw+): Terragen heightfield
+  GMT -raster- (rw): GMT NetCDF Grid Format
+  netCDF -raster,vector- (rw+s): Network Common Data Format
+  HDF4 -raster- (ros): Hierarchical Data Format Release 4
+  HDF4Image -raster- (rw+): HDF4 Dataset
+  ISIS3 -raster- (rw+v): USGS Astrogeology ISIS cube (Version 3)
+  ISIS2 -raster- (rw+v): USGS Astrogeology ISIS cube (Version 2)
+  PDS -raster- (rov): NASA Planetary Data System
+  VICAR -raster- (rov): MIPL VICAR file
+  TIL -raster- (rov): EarthWatch .TIL
+  ERS -raster- (rw+v): ERMapper .ers Labelled
+  JP2OpenJPEG -raster,vector- (rwv): JPEG-2000 driver based on OpenJPEG library
+  L1B -raster- (rovs): NOAA Polar Orbiter Level 1b Data Set
+  FIT -raster- (rwv): FIT Image
+  GRIB -raster- (rov): GRIdded Binary (.grb)
+  RMF -raster- (rw+v): Raster Matrix Format
+  WCS -raster- (rovs): OGC Web Coverage Service
+  WMS -raster- (rwvs): OGC Web Map Service
+  MSGN -raster- (ro): EUMETSAT Archive native (.nat)
+  RST -raster- (rw+v): Idrisi Raster A.1
+  INGR -raster- (rw+v): Intergraph Raster
+  GSAG -raster- (rwv): Golden Software ASCII Grid (.grd)
+  GSBG -raster- (rw+v): Golden Software Binary Grid (.grd)
+  GS7BG -raster- (rw+v): Golden Software 7 Binary Grid (.grd)
+  COSAR -raster- (rov): COSAR Annotated Binary Matrix (TerraSAR-X)
+  TSX -raster- (rov): TerraSAR-X Product
+  COASP -raster- (ro): DRDC COASP SAR Processor Raster
+  R -raster- (rwv): R Object Data Store
+  MAP -raster- (rov): OziExplorer .MAP
+  KMLSUPEROVERLAY -raster- (rwv): Kml Super Overlay
+  PDF -raster,vector- (rw+vs): Geospatial PDF
+  Rasterlite -raster- (rws): Rasterlite
+  MBTiles -raster- (rw+v): MBTiles
+  PLMOSAIC -raster- (ro): Planet Labs Mosaics API
+  CALS -raster- (rw): CALS (Type 1)
+  WMTS -raster- (rwv): OGC Web Mab Tile Service
+  SENTINEL2 -raster- (rovs): Sentinel 2
+  MRF -raster- (rw+v): Meta Raster Format
+  PNM -raster- (rw+v): Portable Pixmap Format (netpbm)
+  DOQ1 -raster- (rov): USGS DOQ (Old Style)
+  DOQ2 -raster- (rov): USGS DOQ (New Style)
+  GenBin -raster- (rov): Generic Binary (.hdr Labelled)
+  PAux -raster- (rw+): PCI .aux Labelled
+  MFF -raster- (rw+v): Vexcel MFF Raster
+  MFF2 -raster- (rw+): Vexcel MFF2 (HKV) Raster
+  FujiBAS -raster- (ro): Fuji BAS Scanner Image
+  GSC -raster- (rov): GSC Geogrid
+  FAST -raster- (rov): EOSAT FAST Format
+  BT -raster- (rw+v): VTP .bt (Binary Terrain) 1.3 Format
+  LAN -raster- (rw+v): Erdas .LAN/.GIS
+  CPG -raster- (ro): Convair PolGASP
+  IDA -raster- (rw+v): Image Data and Analysis
+  NDF -raster- (rov): NLAPS Data Format
+  EIR -raster- (rov): Erdas Imagine Raw
+  DIPEx -raster- (rov): DIPEx
+  LCP -raster- (rwv): FARSITE v.4 Landscape File (.lcp)
+  GTX -raster- (rw+v): NOAA Vertical Datum .GTX
+  LOSLAS -raster- (rov): NADCON .los/.las Datum Grid Shift
+  NTv2 -raster- (rw+vs): NTv2 Datum Grid Shift
+  CTable2 -raster- (rw+v): CTable2 Datum Grid Shift
+  ACE2 -raster- (rov): ACE2
+  SNODAS -raster- (rov): Snow Data Assimilation System
+  KRO -raster- (rw+v): KOLOR Raw
+  ROI_PAC -raster- (rw+v): ROI_PAC raster
+  RRASTER -raster- (rov): R Raster
+  ENVI -raster- (rw+v): ENVI .hdr Labelled
+  EHdr -raster- (rw+v): ESRI .hdr Labelled
+  ISCE -raster- (rw+v): ISCE raster
+  ARG -raster- (rwv): Azavea Raster Grid format
+  RIK -raster- (rov): Swedish Grid RIK (.rik)
+  USGSDEM -raster- (rwv): USGS Optional ASCII DEM (and CDED)
+  GXF -raster- (ro): GeoSoft Grid Exchange Format
+  DODS -raster- (ro): DAP 3.x servers
+  KEA -raster- (rw+): KEA Image Format (.kea)
+  BAG -raster- (ro): Bathymetry Attributed Grid
+  HDF5 -raster- (ros): Hierarchical Data Format Release 5
+  HDF5Image -raster- (ro): HDF5 Dataset
+  NWT_GRD -raster- (rw+v): Northwood Numeric Grid Format .grd/.tab
+  NWT_GRC -raster- (rov): Northwood Classified Grid Format .grc/.tab
+  ADRG -raster- (rw+vs): ARC Digitized Raster Graphics
+  SRP -raster- (rovs): Standard Raster Product (ASRP/USRP)
+  BLX -raster- (rwv): Magellan topo (.blx)
+  PostGISRaster -raster- (rws): PostGIS Raster driver
+  SAGA -raster- (rw+v): SAGA GIS Binary Grid (.sdat)
+  XYZ -raster- (rwv): ASCII Gridded XYZ
+  HF2 -raster- (rwv): HF2/HFZ heightfield raster
+  OZI -raster- (rov): OziExplorer Image File
+  CTG -raster- (rov): USGS LULC Composite Theme Grid
+  E00GRID -raster- (rov): Arc/Info Export E00 GRID
+  ZMap -raster- (rwv): ZMap Plus Grid
+  NGSGEOID -raster- (rov): NOAA NGS Geoid Height Grids
+  IRIS -raster- (rov): IRIS data (.PPI, .CAPPi etc)
+  PRF -raster- (rov): Racurs PHOTOMOD PRF
+  GPKG -raster,vector- (rw+vs): GeoPackage
+  CAD -raster,vector- (rovs): AutoCAD Driver
+  PLSCENES -raster,vector- (ro): Planet Labs Scenes API
+  HTTP -raster,vector- (ro): HTTP Fetching Wrapper
+</code></pre><h2 id="&#x4F7F;&#x7528;&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;&#x8FDB;&#x884C;&#x6805;&#x683C;&#x683C;&#x5F0F;&#x8F6C;&#x6362;">&#x4F7F;&#x7528;&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;&#x8FDB;&#x884C;&#x6805;&#x683C;&#x683C;&#x5F0F;&#x8F6C;&#x6362;</h2>
+<p>GDAL&#x5E93;&#x4E0D;&#x4F46;&#x63D0;&#x4F9B;&#x4E86;C/C++&#x7F16;&#x7A0B;&#x8BED;&#x8A00;&#x7684;API&#x63A5;&#x53E3;&#xFF0C;&#x8FD8;&#x63D0;&#x4F9B;&#x4E86;&#x5F88;&#x591A;&#x5B9E;&#x7528;&#x7684;&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;&#xFF0C;&#x5E2E;&#x52A9;&#x6211;&#x4EEC;&#x5B8C;&#x6210;&#x4E00;&#x4E9B;&#x65E5;&#x5E38;&#x7684;&#x6570;&#x636E;&#x5904;&#x7406;&#x5DE5;&#x4F5C;&#x3002;</p>
+<p>&#x6211;&#x4EEC;&#x4EE5;&#x5C06;GeoTIFF&#x683C;&#x5F0F;&#x8F6C;&#x4E3A;IMAGE&#x683C;&#x5F0F;&#x4E3A;&#x4F8B;&#xFF0C;&#x8BF4;&#x660E;&#x5982;&#x4F55;&#x4F7F;&#x7528;&#x547D;&#x4EE4;&#x884C;&#x5DE5;&#x5177;&#x8FDB;&#x884C;&#x6805;&#x683C;&#x683C;&#x5F0F;&#x8F6C;&#x6362;&#xFF1A;</p>
+<p><code>gdal_translate -of HFA example.tif example.img</code></p>
+<p>&#x5176;&#x4E2D;&#xFF0C;<code>of</code>&#x9009;&#x9879;&#x6307;&#x793A;&#x4E86;&#x8F93;&#x51FA;&#x6570;&#x636E;&#x683C;&#x5F0F;&#xFF0C;<code>HFA</code>&#x4EE3;&#x8868;&#x7684;&#x662F;Erdas Imagine Images &#xFF0C;<code>example.tif</code>&#x662F;&#x8F93;&#x5165;&#x6570;&#x636E;&#x8DEF;&#x5F84;&#xFF0C;<code>example.img</code>&#x662F;&#x8F93;&#x51FA;&#x6570;&#x636E;&#x8DEF;&#x5F84;</p>
+<p>&#x8BE6;&#x7EC6;&#x53C2;&#x6570;&#x53C2;&#x8003;&#xFF1A;<a href="http://www.gdal.org/gdal_translate.html" target="_blank">gdal_translate</a></p>
+<h2 id="&#x4F7F;&#x7528;python&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x6805;&#x683C;&#x683C;&#x5F0F;&#x8F6C;&#x6362;">&#x4F7F;&#x7528;Python&#x4EE3;&#x7801;&#x8FDB;&#x884C;&#x6805;&#x683C;&#x683C;&#x5F0F;&#x8F6C;&#x6362;</h2>
+<p>&#x4E0B;&#x9762;&#x4ECB;&#x7ECD;&#x4E24;&#x79CD;&#x8FDB;&#x884C;&#x8F6C;&#x6362;&#x7684;&#x65B9;&#x5F0F;&#xFF1A;</p>
+<ol>
+<li><p>GDAL 2.1&#x7248;&#x672C;&#x4E4B;&#x540E;&#x63D0;&#x4F9B;&#x4E86;&#xFF0C;&#x4ECE;&#x4EE3;&#x7801;&#x4E2D;&#x8C03;&#x7528;&#x547D;&#x4EE4;&#x884C;&#x7684;API&#x63A5;&#x53E3;&#xFF0C;&#x6240;&#x4EE5;&#x6211;&#x4EEC;&#x53EF;&#x4EE5;&#x5728;Python&#x4EE3;&#x7801;&#x4E2D;&#x76F4;&#x63A5;&#x8C03;&#x7528;<code>Translate()</code>&#x51FD;&#x6570;&#x8FDB;&#x884C;&#x8F6C;&#x6362;</p>
+<pre><code class="lang-Python"><span class="hljs-keyword">from</span> osgeo <span class="hljs-keyword">import</span> gdal
+
+ds = gdal.Open(<span class="hljs-string">&apos;example.tif&apos;</span>)
+ds = gdal.Translate(<span class="hljs-string">&apos;example.img&apos;</span>, ds, format=<span class="hljs-string">&apos;HFA&apos;</span>)
+ds = <span class="hljs-keyword">None</span>
+</code></pre>
+<p><code>Translate()</code>&#x51FD;&#x6570;&#x7684;&#x7B2C;&#x4E00;&#x4E2A;&#x53C2;&#x6570;&#x662F;&#x8F93;&#x51FA;&#x6570;&#x636E;&#x8DEF;&#x5F84;&#xFF0C;&#x7B2C;&#x4E8C;&#x53C2;&#x6570;&#x662F;&#x8F93;&#x5165;&#x6570;&#x636E;&#x8DEF;&#x5F84;&#x6216;&#x8005;&#x8F93;&#x5165;&#x6570;&#x636E;&#x7684;Dataset&#x5BF9;&#x8C61;&#xFF0C;&#x540E;&#x9762;&#x90FD;&#x662F;&#x53EF;&#x9009;&#x53C2;&#x6570;&#xFF0C;&#x5177;&#x4F53;<code>Translate()</code>&#x51FD;&#x6570;&#x7684;&#x53C2;&#x6570;&#x53EF;&#x4EE5;&#x53C2;&#x89C1;&#xFF1A;<a href="http://gdal.org/python/" target="_blank">GDAL/OGR Python API</a></p>
+</li>
+<li><p>&#x4F7F;&#x7528;<code>CreateCopy()</code>&#x65B9;&#x6CD5;&#x8FDB;&#x884C;&#x6570;&#x636E;&#x7684;&#x590D;&#x5236;&#x53CA;&#x683C;&#x5F0F;&#x8F6C;&#x6362;</p>
+<pre><code class="lang-Python"><span class="hljs-keyword">from</span> osgeo <span class="hljs-keyword">import</span> gdal
+
+<span class="hljs-comment"># &#x6253;&#x5F00;&#x6570;&#x636E;&#x6587;&#x4EF6;</span>
+src_ds = gdal.Open(<span class="hljs-string">&apos;example.tif&apos;</span>)
+
+<span class="hljs-comment"># &#x83B7;&#x5F97;&#x6570;&#x636E;&#x9A71;&#x52A8;&#x5BF9;&#x8C61;</span>
+driver = gdal.GetDriverByName(<span class="hljs-string">&apos;HFA&apos;</span>)
+
+<span class="hljs-comment"># &#x8FDB;&#x884C;&#x6570;&#x636E;&#x683C;&#x5F0F;&#x8F6C;&#x6362;</span>
+dst_ds = driver.CreateCopy(<span class="hljs-string">&apos;example.img&apos;</span>, src_ds)
+
+<span class="hljs-comment"># &#x5173;&#x95ED;&#x6570;&#x636E;&#x96C6;&#x5BF9;&#x8C61;</span>
+dst_ds = <span class="hljs-keyword">None</span>
+src_ds = <span class="hljs-keyword">None</span>
+</code></pre>
+</li>
+</ol>
+<h2 id=""> </h2>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="打开栅格数据的正确方式.html" class="navigation navigation-prev " aria-label="Previous page: 打开栅格数据的正确方式">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="栅格数据创建与保存.html" class="navigation navigation-next " aria-label="Next page: 栅格数据创建与保存">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"栅格数据格式转换","level":"1.4.2.2","depth":3,"next":{"title":"栅格数据创建与保存","level":"1.4.2.3","depth":3,"path":"GDAL空间数据处理/GDAL数据基本操作/栅格数据创建与保存.md","ref":"GDAL空间数据处理/GDAL数据基本操作/栅格数据创建与保存.md","articles":[]},"previous":{"title":"打开栅格数据的正确方式","level":"1.4.2.1","depth":3,"path":"GDAL空间数据处理/GDAL数据基本操作/打开栅格数据的正确方式.md","ref":"GDAL空间数据处理/GDAL数据基本操作/打开栅格数据的正确方式.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":[],"pluginsConfig":{"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"GDAL空间数据处理/GDAL数据基本操作/栅格数据格式转换.md","mtime":"2019-03-22T18:52:30.713Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-03-22T20:04:12.549Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
